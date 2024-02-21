@@ -1,0 +1,16 @@
+services:
+  mysql:
+    image: mysql:latest
+    volumes:
+      - type: volume
+        source: todo-data
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB}
+    ports:
+      - "${MYSQL_PORT}:3306"
+volumes:
+  todo-data:
